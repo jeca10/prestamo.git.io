@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center displey-3 py-5 "> Lista de computadores </h1>
+
+
+            <div
+                class="tablw-hover"
+            >
+                <table
+                    class="table table-dark"
+                >
+                    <thead>
+                        
+                        <tr>
+                            <th >ID</th>
+                            <th >Marca</th>
+                            <th >Serial</th>
+                            <th >Desripcion</th>
+                            <th >Hora inicio</th>
+                            <th >Hora fin</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        {% for compu in compus %}
+                        <tr class="">
+                            <td >{{compu.id}}</td>
+                            <td>{{compu.marca}}</td>
+                            <td>{{compu.serial}}</td>
+                            <td>{{compu.descricion}}</td>
+                            <td>{{compu.hora_inicio}}</td>
+                            <td>{{compu.hora_fin}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+
+            <!-- <ul class="list-group">
+                {% for compu in compus %}
+                <a class="list-group-item" href="{% url 'task_detail' compu.id %}">
+                    
+                    <header class="d-flex justify-content-between">
+                        
+                        <h1 class="fw-bold text-success"> {{compu.marca}}</h1>
+                        
+                        
+                        <h1 class="fw-bold">
+                            {{compu.serial}}
+
+                        </h1>
+                        
+                        <p>{{compu.descricion}}</p>
+                    </header>
+                                      
+                    
+                  
+                </a>
+            
+            
+                {% endfor%}
+            
+            </ul> -->
+        </div>
+    </div>
+</main>
+
+{% endblock %}

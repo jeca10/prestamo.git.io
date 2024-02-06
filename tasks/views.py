@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TaskForm
-from .models import Task
+from .models import Task,Compus, Aprendiz
 from django.utils import timezone
 import re
 
@@ -119,6 +119,14 @@ def signin(request):
         return redirect('tasks')
  
 
+def cumpu(request):
+    compus=Compus.objects.all()
+    return render(request, 'compus.html',{'compus':compus})
+
+
+""" def aprendiz(request):
+    aprendiz=Aprendiz.objects.all()
+    return render(request, 'aprendiz.html',{'aprendiz':aprendiz}) """
 
 
 
