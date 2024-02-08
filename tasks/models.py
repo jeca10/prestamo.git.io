@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Task(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=20)
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     datecompleted  = models.DateTimeField(null=True, blank=True)
@@ -17,7 +17,7 @@ class Task(models.Model):
     
 
 class Compus(models.Model):
-    marca = models.CharField(max_length=200)
+    marca = models.CharField(max_length=50)
     serial= models.CharField(max_length=20)
     descricion=models.TextField(blank=True)
     hora_inicio = models.DateTimeField(null=True, blank=True)
