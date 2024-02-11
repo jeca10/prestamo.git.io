@@ -29,6 +29,7 @@ urlpatterns = [
     path('task/<int:task_id>/delete', views.delete_task, name='delete_task'),
     path('logout/', views.desconectar, name='logout'),
     path('signin/', views.signin, name='signin'),
-    path('cumpu/',views.cumpu,name='cumpu')
+    path('cumpu/',views.cumpu,name='cumpu'),
+    path('create_compus/', views.createcompus, name='create_compus')
     
 ]

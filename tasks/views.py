@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .forms import TaskForm
+from .forms import TaskForm, CumposForm
 from .models import Task,Compus, Aprendiz
 from django.utils import timezone
 import re
@@ -123,6 +123,23 @@ def cumpu(request):
     compus=Compus.objects.all()
     return render(request, 'compus.html',{'compus':compus})
 
+
+def createcompus(request):
+    if request.method == 'GET':
+        return render(request, 'create_compus.html', {
+            'form': CumposForm
+        })
+    else:
+        try:
+            form=CumposForm(request.POST)
+            new_compus = form.save(commit=False)
+            new_compus.save()
+            return redirect('cumpu')
+        except ValueError:
+            return render(request, 'create_compus.html', {
+                'form': CumposForm,
+                "error": 'Error al crear el compus'
+            })
 
 """ def aprendiz(request):
     aprendiz=Aprendiz.objects.all()
