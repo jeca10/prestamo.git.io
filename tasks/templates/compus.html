@@ -1,75 +1,62 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<main class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1 class="text-center displey-3 py-5 "> Lista de computadores </h1>
-            <button class="btn btn-primary">
-                <a href="{% url 'create_compus' %}">Create</a>
-            </button>
-        
 
-            <div
-                class="tablw-hover"
+<div class="card">
+    <div class="card-header">Laptod</div>
+    <div class="card-body">
+        <h4 class="card-title">Laptod</h4>
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-striped table-hover table-borderless table-primary align-middle"
             >
-                <table
-                    class="table table-dark"
-                >
-                    <thead>
-                        
-                        <tr>
-                            <th >ID</th>
-                            <th >Marca</th>
-                            <th >Serial</th>
-                            <th >Desripcion</th>
-                            <th >Hora inicio</th>
-                            <th >Hora fin</th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                        {% for compu in compus %}
-                        <tr class="">
-                            <td >{{compu.id}}</td>
-                            <td>{{compu.marca}}</td>
-                            <td>{{compu.serial}}</td>
-                            <td>{{compu.descricion}}</td>
-                            <td>{{compu.hora_inicio}}</td>
-                            <td>{{compu.hora_fin}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            
+                <thead class="table-light">
+                    <caption>
+                        Listed
+                    </caption>
+                    <tr>
+                        <th># ID</th>
+                        <th>Marca</th>
+                        <th># Serial</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr
+                        class="table-primary"
+                    >
+                        <td scope="row">{{compu.id}}</td>
+                        <td>{{compu.marca}}</td>
+                        <td>{{compu.serial}}</td>
+                        <td>{{compu.descricion}}</td>
+                        <td>
+                            <a class="btn btn-info" href="{% url 'create_compus' %}" role="button"></a>
+                             |
+                              Borrar
+                            </td>
 
-            <!-- <ul class="list-group">
-                {% for compu in compus %}
-                <a class="list-group-item" href="{% url 'task_detail' compu.id %}">
+                    </tr>
                     
-                    <header class="d-flex justify-content-between">
-                        
-                        <h1 class="fw-bold text-success"> {{compu.marca}}</h1>
-                        
-                        
-                        <h1 class="fw-bold">
-                            {{compu.serial}}
-
-                        </h1>
-                        
-                        <p>{{compu.descricion}}</p>
-                    </header>
-                                      
+                </tbody>
+                <tfoot>
                     
-                  
-                </a>
-            
-            
-                {% endfor%}
-            
-            </ul> -->
+                </tfoot>
+            </table>
         </div>
+        
     </div>
-</main>
+    <div class="card-footer text-muted">Footer</div>
+    <button class="btn btn-primary ">
+        <a href="{% url 'create_compus' %}" class="text-white">Create</a>
+    </button>
+</div>
+
+
 
 {% endblock %}
+
+
+
