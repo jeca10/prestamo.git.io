@@ -50,11 +50,11 @@ def signup(request):
 
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'tasks.html', {"tasks": tasks})
+    return render(request, 'tareas/tasks.html', {"tasks": tasks})
 
 def create_task(request):
     if request.method == "GET":
-        return render(request, 'create_task.html', {
+        return render(request, 'tareas/create_task.html', {
             'form': TaskForm
         })
     else:
@@ -65,7 +65,7 @@ def create_task(request):
             new_task.save()
             return redirect('tasks')
         except ValueError:
-            return render(request, 'create_task.html', {
+            return render(request, 'tareas/create_task.html', {
                 'form': TaskForm,
                 "error": 'Error al crear la tarea'
             })
@@ -78,7 +78,7 @@ def task_detail(request, task_id):
    if request.method == "GET":
         task =get_object_or_404(Task, pk=task_id, user=request.user)
         form = TaskForm(instance=task)
-        return render(request, 'task_detail.html', {'task': task, 'form': form})
+        return render(request, 'tareas/task_detail.html', {'task': task, 'form': form})
    else:
       try:
             task =get_object_or_404(Task, pk=task_id, user=request.user)
@@ -86,7 +86,7 @@ def task_detail(request, task_id):
             form.save()
             return redirect('tasks')
       except ValueError:
-            return render(request, 'task_detail.html', {'task': task, 'form': form,
+            return render(request, 'tareas/task_detail.html', {'task': task, 'form': form,
             'error': "error al actualizar"    
             })
 
@@ -121,12 +121,12 @@ def signin(request):
 
 def cumpu(request):
     compus=Compus.objects.all()
-    return render(request, 'compus.html',{'compus':compus})
+    return render(request, 'Computador/compus.html',{'compus':compus})
 
 
 def createcompus(request):
     if request.method == 'GET':
-        return render(request, 'create_compus.html', {
+        return render(request, 'Computador/create_compus.html', {
             'form': CumposForm
         })
     else:
@@ -134,16 +134,33 @@ def createcompus(request):
             form=CumposForm(request.POST)
             new_compus = form.save(commit=False)
             new_compus.save()
-            return redirect('cumpu')
+            return redirect('compus')
         except ValueError:
-            return render(request, 'create_compus.html', {
+            return render(request, 'Computador/create_compus.html', {
                 'form': CumposForm,
                 "error": 'Error al crear el compus'
             })
 
-""" def aprendiz(request):
+def compus_detail(request,):
+   if request.method == "GET":
+        compu =get_object_or_404(Compus)
+        form = CumposForm(instance=compu)
+        return render(request, 'Computador/compus_detail.html', {'compus': compu, 'form': form})
+   else:
+      try:
+            compu =get_object_or_404(Compus)
+            form = CumposForm(request.POST, instance=compu)
+            form.save()
+            return redirect('cumpu')
+      except ValueError:
+            return render(request, 'Computador/compus_detail.html', {'compus': compu, 'form': form,
+            'error': "error al actualizar"    
+            })
+
+
+def aprendiz(request):
     aprendiz=Aprendiz.objects.all()
-    return render(request, 'aprendiz.html',{'aprendiz':aprendiz}) """
+    return render(request, 'Aprendiz/aprendiz.html',{'aprendiz':aprendiz})
 
 
 

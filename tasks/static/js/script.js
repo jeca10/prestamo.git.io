@@ -1,15 +1,5 @@
-$(".sidebar ul li").on('click', function () {
-    $(".sidebar ul li.active").removeClass('active');
-    $(this).addClass('active');
+const hamBurger = document.querySelector(".toggle-btn");
+
+hamBurger.addEventListener("click", function () {
+  document.querySelector("#sidebar").classList.toggle("expand");
 });
-
-$('.open-btn').on('click', function () {
-    $('.sidebar').addClass('active');
-
-});
-
-
-$('.close-btn').on('click', function () {
-    $('.sidebar').removeClass('active');
-
-})

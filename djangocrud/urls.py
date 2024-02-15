@@ -30,6 +30,8 @@ urlpatterns = [
     path('logout/', views.desconectar, name='logout'),
     path('signin/', views.signin, name='signin'),
     path('cumpu/',views.cumpu,name='cumpu'),
-    path('create_compus/', views.createcompus, name='create_compus')
+    path('create_compus/', views.createcompus, name='create_compus'),
+    path('compus_detail/', views.compus_detail, name='compus_detail'),
+    path('aprendiz/',views.aprendiz,name='aprendiz'),
     
 ]
