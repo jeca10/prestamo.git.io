@@ -87,7 +87,7 @@ a.sidebar-link {
     padding: .625rem 1.625rem;
     color: #FFF;
     display: block;
-    font-size: 0.9rem;
+    font-size: 1rem;
     white-space: nowrap;
     border-left: 3px solid transparent;
 }
@@ -99,7 +99,7 @@ a.sidebar-link {
 
 a.sidebar-link:hover {
     background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;
+    border-left: 3px solid #121822;
 }
 
 .sidebar-item {

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Task, Compus
+from .models import Task, Compus, Aprendiz
 
 class TaskForm(forms.ModelForm):
     class Meta:
@@ -24,4 +24,16 @@ class CumposForm(forms.ModelForm):
 
     }
 
+
+class AprendizForm(forms.ModelForm):
+    class Meta:
+        model=Aprendiz
+        fields = ['Nombre', 'Documento', 'Formacion', 'Ficha', ]
+        widgets = {
+        'Nombre' : forms.TextInput,
+        'Documento' : forms.Textarea,
+        'Formacion' : forms.Textarea,
+        'Ficha' : forms.Textarea
+
+    }
         

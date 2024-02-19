@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .forms import TaskForm, CumposForm
+from .forms import TaskForm, CumposForm, AprendizForm
 from .models import Task,Compus, Aprendiz
 from django.utils import timezone
 import re
@@ -121,7 +121,7 @@ def signin(request):
 
 def cumpu(request):
     compus=Compus.objects.all()
-    return render(request, 'Computador/compus.html',{'compus':compus})
+    return render(request,'Computador/compus.html',{'compus':compus})
 
 
 def createcompus(request):
@@ -132,20 +132,20 @@ def createcompus(request):
     else:
         try:
             form=CumposForm(request.POST)
-            new_compus = form.save(commit=False)
-            new_compus.save()
-            return redirect('compus')
+            form.save()
+            return redirect('cumpu')
         except ValueError:
             return render(request, 'Computador/create_compus.html', {
                 'form': CumposForm,
                 "error": 'Error al crear el compus'
             })
 
+
 def compus_detail(request,):
    if request.method == "GET":
         compu =get_object_or_404(Compus)
         form = CumposForm(instance=compu)
-        return render(request, 'Computador/compus_detail.html', {'compus': compu, 'form': form})
+        return render(request, 'Computador/compu_detail.html', {'compus': compu, 'form': form})
    else:
       try:
             compu =get_object_or_404(Compus)
@@ -153,16 +153,42 @@ def compus_detail(request,):
             form.save()
             return redirect('cumpu')
       except ValueError:
-            return render(request, 'Computador/compus_detail.html', {'compus': compu, 'form': form,
+            return render(request, 'Computador/compu_detail.html', {'compus': compu, 'form': form,
             'error': "error al actualizar"    
             })
 
+def complete_compu(request, compu_id):
+    compu = get_object_or_404(Compus, pk=compu_id)
+    if request.method == 'POST':
+        compu.datecompleted = timezone.now()
+        compu.save()
+        return redirect('compus')
+
+def delete_Compu(request, compu_id):
+    compus = get_object_or_404(Compus, pk=compu_id)
+    if request.method == 'GET':
+        compus.delete()
+        return redirect('cumpu')
 
 def aprendiz(request):
     aprendiz=Aprendiz.objects.all()
     return render(request, 'Aprendiz/aprendiz.html',{'aprendiz':aprendiz})
 
-
+def create_aprendiz(request):
+    if request.method == 'GET':
+        return render(request, 'Aprendiz/create_apre.html', {
+            'form': AprendizForm
+        })
+    else:
+        try:
+            form=AprendizForm(request.POST)
+            form.save()
+            return redirect('aprendiz')
+        except ValueError:
+            return render(request, 'Aprendiz/create_apre.html', {
+                'form': AprendizForm,
+                "error": 'Error al crear el Aprendiz'
+            })
 
 
         

@@ -11,6 +11,7 @@
         >
             <table
                 class="table table-striped table-hover table-borderless table-primary align-middle"
+                id="table"
             >
                 <thead class="table-light">
                     <caption>
@@ -25,6 +26,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
+                    {% for compu in compus %}
                     <tr
                         class="table-primary"
                     >
@@ -32,14 +34,17 @@
                         <td>{{compu.marca}}</td>
                         <td>{{compu.serial}}</td>
                         <td>{{compu.descricion}}</td>
+                        
                         <td>
-                            <a class="btn btn-info" href="{% url 'compus_detail' %}" role="button">editar</a>
+                            <a class="btn btn-success" href="{% url 'compus_detail' %}" role="button">editar</a>
+                            {% if user.is_superuser %}
+                           
                              |
-                              Borrar
+                             <a class="btn btn-danger" href="{% url 'delete_Compu' compu.id %}" role="button">borrar</a>
                             </td>
-
+                            {% endif%}
                     </tr>
-                    
+                    {% endfor%}
                 </tbody>
                 <tfoot>
                     
@@ -48,7 +53,7 @@
         </div>
         
     </div>
-    <div class="card-footer text-muted">Footer</div>
+    
     <button class="btn btn-primary ">
         <a href="{% url 'create_compus' %}" class="text-white">Create</a>
     </button>

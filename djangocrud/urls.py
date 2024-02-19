@@ -22,6 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('signup/', views.signup, name='signup'),
+
+    
+
     path('tasks/', views.tasks, name='tasks'),
     path('tasks/create/', views.create_task, name='create_task'),
     path('task/<int:task_id>/', views.task_detail, name='task_detail'),
@@ -32,6 +35,8 @@ urlpatterns = [
     path('cumpu/',views.cumpu,name='cumpu'),
     path('create_compus/', views.createcompus, name='create_compus'),
     path('compus_detail/', views.compus_detail, name='compus_detail'),
+    path('delete_Compu/<int:compu_id>', views.delete_Compu, name='delete_Compu'),
     path('aprendiz/',views.aprendiz,name='aprendiz'),
+    path('create_aprendiz/',views.create_aprendiz,name='create_aprendiz')
     
 ]

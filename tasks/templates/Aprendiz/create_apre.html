@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{error}}
+
+<div class="card">
+    
+    <div class="card-body">
+        <h4 class="card-title">Aprendiz</h4>
+        <form method="post">
+            {% csrf_token %}
+              <div class="">
+                <label >Nombre</label>
+                <input type="text" class="form-control" name="Nombre">
+              </div>
+              <div class="">
+                <label>Documento</label>
+                <input type="number" class="form-control" name="Documento" >
+              </div>
+              <div class="">
+                  <label >Formacion</label>
+                  <input type="text" class="form-control" name="Formacion" >
+                </div>
+              <div class="">
+                  <label >Ficha</label>
+                  <input type="number" class="form-control" name="Ficha" >
+                </div>
+              
+              <button  class="btn btn-primary">Save</button>
+              
+            </form>
+    </div>
+</div>
+
+      
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

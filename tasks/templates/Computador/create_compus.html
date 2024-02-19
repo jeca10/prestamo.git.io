@@ -3,12 +3,14 @@
 {% block content %}
 {{error}}
 <main class="container">
+  
     <div class="row">
         <div class="text-center">
             <h1 class="text-center displey-3 py-5">
                 Laptop Registration
             </h1>
-            <form>
+            <form method="post">
+              {% csrf_token %}
                 <div class="">
                   <label >Marca</label>
                   <input type="text" class="form-control" name="marca">
@@ -22,7 +24,7 @@
                     <input type="text" class="form-control" name="descricion" >
                   </div>
                 
-                <button  class="btn btn-primary">Save</button>
+                  <button  class="btn btn-primary">update</button>
                 
               </form>
         </div>

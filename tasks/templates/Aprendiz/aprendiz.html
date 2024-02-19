@@ -24,18 +24,33 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
+                        <th>Documento</th>
                         <th>Formacion</th>
                         <th>Ficha</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
+                    {% for apren in aprendiz %}
                     <tr
                         class="table-primary"
                     >
-                        <td scope="row"></td>
-                        <td></td>
-                        <td></td>
+                        <td scope="row">{{apren.id}}</td>
+                        <td>{{apren.Nombre}}</td>
+                        <td>{{apren.Documento}}</td>
+                        <td>{{apren.Formacion}}</td>
+                        <td>{{apren.Ficha}}</td>
+                        
+                        <td>
+                            <a class="btn btn-success" href="" role="button">editar</a>
+                            {% if user.is_superuser %}
+                           
+                             |
+                             <a class="btn btn-danger" href="" role="button">borrar</a>
+                            </td>
+                            {% endif%}
                     </tr>
+                    {% endfor%}
                    
                 </tbody>
                 <tfoot>
@@ -45,7 +60,9 @@
         </div>
         
     </div>
-    <div class="card-footer text-muted">Footer</div>
+    <button class="btn btn-primary ">
+        <a href="{% url 'create_aprendiz' %}" class="text-white">Create</a>
+    </button>
 </div>
 
 
