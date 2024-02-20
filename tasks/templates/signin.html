@@ -1,37 +1,78 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block content %}
 
 {{error}}
 
-<main class="container">
-    <div class="row">
-        <section class="">
-            <form action="/signin/" method="POST" class="card card-body">
-                <h1 class="text-center">Signin</h1>
-               
-                {% csrf_token %}
-                            
+
+<section class="login py-5 bg-light">
+    <main class="container">
+        <div class="row g-0">
             
-                <div class="mb-3">
+
+            <div class="col-lg-5">
+                <img src="{% static 'img/login.jpeg' %}" class="img-fluid py-5" alt="">
+            </div>
+
+            <div class="col-lg-7 text-center py-5">
+                <h1 class="animate__animated animate__pulse animate__infinite">Welcome Back</h1>
+
+                <form action="/signin/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row py-3 pt-5">
+                        <div class="offset-1 col-lg-10">
+                            <input type="text" name="username" id="username" class="inp px-3" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-row py-3">
+                        <div class="offset-1 col-lg-10">
+                            <input type="password" name="password" id="password" class="inp px-3" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="foem_row py-2">
+                        <div class="offset-1 col-lg-10">
+                           <button class="btn1">Signin</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           <!--  <form action="/signin/" method="POST" class="card card-body">
+                <h1 class="">Signin</h1>
+
+                
+
+
+                <div class="">
                     <label for="username">Username:</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Ingresa tu username">
+                    <input type="text" name="username" id="username" class="form-control"
+                        placeholder="Ingresa tu username">
                 </div>
-            
-                <div class="mb-3">
+
+                <div class="">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu password">
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="Ingresa tu password">
                 </div>
-               
-                <button class="btn btn-primary">
+
+                <button class="">
                     Signin
                 </button>
-            
-            </form>
-        
-        
-        </section>
-    </div>
-</main>
+
+            </form> -->
+
+
+
+        </div>
+    </main>
+</section>
 
 {% endblock %}

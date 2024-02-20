@@ -116,7 +116,7 @@ def signin(request):
             return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
 
         login(request, user)
-        return redirect('tasks')
+        return redirect('/')
  
 
 def cumpu(request):
@@ -141,28 +141,22 @@ def createcompus(request):
             })
 
 
-def compus_detail(request,):
+def compus_detail(request, compu_id):
    if request.method == "GET":
-        compu =get_object_or_404(Compus)
+        compu =get_object_or_404(Compus, pk=compu_id)
         form = CumposForm(instance=compu)
-        return render(request, 'Computador/compu_detail.html', {'compus': compu, 'form': form})
+        return render(request, 'Computador/modal_editar.html', {'compus': compu, 'form': form})
    else:
       try:
-            compu =get_object_or_404(Compus)
+            compu =get_object_or_404(Compus, pk=compu_id)
             form = CumposForm(request.POST, instance=compu)
             form.save()
             return redirect('cumpu')
       except ValueError:
-            return render(request, 'Computador/compu_detail.html', {'compus': compu, 'form': form,
+            return render(request, 'Computador/modal_editar.html', {'compus': compu, 'form': form,
             'error': "error al actualizar"    
             })
 
-def complete_compu(request, compu_id):
-    compu = get_object_or_404(Compus, pk=compu_id)
-    if request.method == 'POST':
-        compu.datecompleted = timezone.now()
-        compu.save()
-        return redirect('compus')
 
 def delete_Compu(request, compu_id):
     compus = get_object_or_404(Compus, pk=compu_id)
@@ -190,5 +184,27 @@ def create_aprendiz(request):
                 "error": 'Error al crear el Aprendiz'
             })
 
+def aprendiz_detail(request):
+    if request.method == "GET":
+        apren = get_object_or_404(Aprendiz)
+        form = AprendizForm(instance=apren)
+        return render(request, 'Aprendiz/apren_detail.html',
+                      {'aprendiz':apren, 'form':form,
+                       'error':"error al actualizar"
+                       })
+    else: 
+        try:
+            apren = get_object_or_404(Aprendiz)
+            form = AprendizForm(request.POST, instance=apren)
+            form.save()
+            return redirect('aprendiz')
+        except ValueError:
+            return render(request, 'Aprendiz/apren_detail.html', {'aprendiz':apren, 'form':form,
+                       'error':"error al actualizar"
+                       })
 
-        
+def delete_apend(request, apren_id):
+    apren = get_object_or_404(Aprendiz, pk=apren_id)
+    if request.method == 'GET':
+        apren.delete()
+        return redirect('aprendiz')

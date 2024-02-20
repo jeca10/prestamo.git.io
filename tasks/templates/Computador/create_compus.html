@@ -1,36 +1,56 @@
 {% extends 'base.html' %}
 
-{% block content %}
-{{error}}
-<main class="container">
-  
-    <div class="row">
-        <div class="text-center">
-            <h1 class="text-center displey-3 py-5">
-                Laptop Registration
-            </h1>
-            <form method="post">
-              {% csrf_token %}
-                <div class="">
-                  <label >Marca</label>
-                  <input type="text" class="form-control" name="marca">
-                </div>
-                <div class="">
-                  <label>Serial</label>
-                  <input type="number" class="form-control" name="serial" >
-                </div>
-                <div class="">
-                    <label >Descripcion</label>
-                    <input type="text" class="form-control" name="descricion" >
-                  </div>
-                
-                  <button  class="btn btn-primary">update</button>
-                
-              </form>
-        </div>
-    </div>
-</main>
+<!-- LLAMA EL CSS PARA LA TABLA -->
+{% block extra_css %}
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="{% static 'css/create_compu.css' %}">
+{% endblock %}
 
+
+{% block content %}
+
+
+
+<section class="crear py-5 bg-light">
+  <div class="container">
+    <div class="row g-0">
+
+      <div class="col-lg-5 ">
+        <img src="{% static 'img/laptop.jpg' %}" class="img-fluid py-6" alt="">
+      </div>
+
+      <div class="col-lg-7 text-center py-5">
+        <h1 class="animate__animated animate__pulse">Create laptod</h1>
+
+        <form action="" >
+          {{error}}
+          {% csrf_token %}
+          <div class="form-row py-3 pt-5">
+            <div class="offset-1 col-lg-10 py-3">
+              <input type="text" class="inp px-3" name="marca" placeholder="Marca">
+            </div>
+            <div class="offset-1 col-lg-10 py-3">
+              <input type="number" class="inp px-3" name="serial" placeholder="Serial">
+            </div>
+            <div class="offset-1 col-lg-10 py-3">
+              <input type="text" class="inp px-3" name="descricion" placeholder="Descripcion">
+            </div>
+          </div>
+          <div class="foem_row py-2">
+            <div class="offset-1 col-lg-10 py-3">
+              <button class="btn1">update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
 
 
 {% endblock %}

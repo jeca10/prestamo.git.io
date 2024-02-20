@@ -98,8 +98,8 @@ a.sidebar-link {
 }
 
 a.sidebar-link:hover {
-    background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #121822;
+    background-color: rgba(255, 255, 255, 0.226);
+    border-left: 3px solid #195025;
 }
 
 .sidebar-item {
@@ -110,7 +110,7 @@ a.sidebar-link:hover {
     position: absolute;
     top: 0;
     left: 70px;
-    background-color: #0e2238;
+    background-color: #227021;
     padding: 0;
     min-width: 15rem;
     display: none;

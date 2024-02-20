@@ -4,19 +4,19 @@
 {% block content %}
 
 <main class="container">
-  
+
     <div class="row">
         <div class="text-center">
             <h1 class="text-center displey-3 py-5">
                 Laptop Registration
             </h1>
-            form method="POST">
-            {% csrf_token %}
-            {{form}}
-            <button class="btn btn-primary">
-                Update
-            </button>
-        </form>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary">
+                    Update
+                </button>
+            </form>
         </div>
     </div>
 </main>

@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px;
+}
+
+.aprend img{
+    
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.aprend h1{
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: "Pacifico", cursive;
+}
+
+
+.inp{
+    height: 50px;
+    width: 350px;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    -webkit-box-shadow: 16px 15px 30px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 16px 15px 30px -1px rgba(66, 68, 90, 1);
+    box-shadow: 16px 15px 30px -1px rgba(66, 68, 90, 1);
+}
+
+.btn1{
+    height: 50px;
+    width: 400px;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    font-weight: 600;
+    background: #00b91f;
+    color: white;
+}

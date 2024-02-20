@@ -1,37 +1,65 @@
 {% extends 'base.html' %}
 
+
+
+
+<!-- LLAMA EL CSS PARA LA TABLA -->
+{% block extra_css %}
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="{% static 'css/crear_aprend.css' %}">
+{% endblock %}
+
+
 {% block content %}
-{{error}}
 
-<div class="card">
-    
-    <div class="card-body">
-        <h4 class="card-title">Aprendiz</h4>
-        <form method="post">
-            {% csrf_token %}
-              <div class="">
-                <label >Nombre</label>
-                <input type="text" class="form-control" name="Nombre">
-              </div>
-              <div class="">
-                <label>Documento</label>
-                <input type="number" class="form-control" name="Documento" >
-              </div>
-              <div class="">
-                  <label >Formacion</label>
-                  <input type="text" class="form-control" name="Formacion" >
-                </div>
-              <div class="">
-                  <label >Ficha</label>
-                  <input type="number" class="form-control" name="Ficha" >
-                </div>
-              
-              <button  class="btn btn-primary">Save</button>
-              
-            </form>
+
+
+<section class="aprend py-5 bg-light">
+  <div class="container">
+    <div class="row g-0">
+
+      <div class="col-lg-5 ">
+        <img src="{% static 'img/aprendiz.jpg' %}" class="img-fluid py-6" alt="">
+      </div>
+
+      <div class="col-lg-7 text-center py-5">
+        <h1 class="animate__animated animate__pulse">Create Aprendices</h1>
+
+        <form action="" >
+          {{error}}
+          {% csrf_token %}
+          <div class="form-row py-3 pt-5">
+            <div class="offset-1 col-lg-10 py-4">
+              <input type="text" class="inp px-3" name="Nombre" placeholder="Nombre">
+            </div>
+            <div class="offset-1 col-lg-10 py-4">
+              <input type="number" class="inp px-3" name="Documento" placeholder="Documento">
+            </div>
+            <div class="offset-1 col-lg-10 py-4">
+              <input type="text" class="inp px-3" name="Formacion" placeholder="Formacion">
+            </div>
+            <div class="offset-1 col-lg-10 py-4">
+              <input type="text" class="inp px-3" name="Ficha" placeholder="Ficha">
+            </div>
+          </div>
+          <div class="foem_row py-7">
+            <div class="offset-1 col-lg-10 py-3">
+              <button class="btn1">update</button>
+            </div>
+            <div class="offset-1 col-lg-10 py-3">
+              <button  class="btn1"><a href="{% url 'aprendiz' %}"></a>return</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 
+</section>
       
 
 {% endblock %}

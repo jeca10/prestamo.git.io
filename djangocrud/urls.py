@@ -20,11 +20,8 @@ from tasks import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', views.home, name='C'),
     path('signup/', views.signup, name='signup'),
-
-    
-
     path('tasks/', views.tasks, name='tasks'),
     path('tasks/create/', views.create_task, name='create_task'),
     path('task/<int:task_id>/', views.task_detail, name='task_detail'),
@@ -34,9 +31,10 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('cumpu/',views.cumpu,name='cumpu'),
     path('create_compus/', views.createcompus, name='create_compus'),
-    path('compus_detail/', views.compus_detail, name='compus_detail'),
+    path('compus_detail/<int:compu_id>', views.compus_detail, name='compus_detail'),
     path('delete_Compu/<int:compu_id>', views.delete_Compu, name='delete_Compu'),
     path('aprendiz/',views.aprendiz,name='aprendiz'),
-    path('create_aprendiz/',views.create_aprendiz,name='create_aprendiz')
-    
+    path('create_aprendiz/',views.create_aprendiz,name='create_aprendiz'),
+    path('aprendiz_detail/',views.aprendiz_detail,name='aprendiz_detail'),
+    path('delete_apend/<int:apren_id>/', views.delete_apend, name='delete_apend')
 ]
