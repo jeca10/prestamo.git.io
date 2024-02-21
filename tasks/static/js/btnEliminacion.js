@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     text: "No podras revertir esta accion!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
+                    confirmButtonColor: '#00b91f',
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Si, eliminar!',
                     backdrop: true,
