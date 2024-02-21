@@ -26,23 +26,26 @@
       <div class="col-lg-7 text-center py-5">
         <h1 class="animate__animated animate__pulse">Create laptod</h1>
 
-        <form action="" >
-          {{error}}
+        <form action="" method="post" id="formularioCreate">
+          
           {% csrf_token %}
           <div class="form-row py-3 pt-5">
             <div class="offset-1 col-lg-10 py-3">
-              <input type="text" class="inp px-3" name="marca" placeholder="Marca">
+              <input type="text" class="inp px-3" id="marca" name="marca" placeholder="Marca" minlength="5" maxlength="10" 
+              autofocus required>
             </div>
             <div class="offset-1 col-lg-10 py-3">
-              <input type="number" class="inp px-3" name="serial" placeholder="Serial">
+              <input type="number" class="inp px-3" id="serial" name="serial" placeholder="Serial" min="10"  
+              autofocus required>
             </div>
             <div class="offset-1 col-lg-10 py-3">
-              <input type="text" class="inp px-3" name="descricion" placeholder="Descripcion">
+              <input type="text" class="inp px-3" id="descricion" name="descricion" placeholder="Descripcion" minlength="30" maxlength="100"
+              autofocus required>
             </div>
           </div>
           <div class="foem_row py-2">
             <div class="offset-1 col-lg-10 py-3">
-              <button class="btn1">update</button>
+              <button type="submit" class="btn1">Save</button>
             </div>
           </div>
         </form>
@@ -53,4 +56,10 @@
 </section>
 
 
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
+<script src="{% static 'js/validacion_create_comp.js' %}"></script>
 {% endblock %}

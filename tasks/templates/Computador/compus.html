@@ -52,14 +52,15 @@
                     <td>{{compu.descricion}}</td>
                     
                     <td>
-                        <button class="btn btn-success" onclick="abrir_modal_ediccion('{% url 'compus_detail' compu.id %}')" role="button">editar</button>
+                       
+                        <a class="btn btn-success" href="{% url 'compus_detail' compu.id %}" role="button">editar</a>
                         
                         {% if user.is_superuser %}
-                       
+
                          |
-                         <a class="btn btn-danger" href="{% url 'delete_Compu' compu.id %}" role="button">borrar</a>
-                        </td>
-                        {% endif%}
+                         <a class="btn btn-danger btnEliminacion" href="{% url 'delete_Compu' compu.id %}" role="button">borrar</a>
+                    </td>
+                    {% endif%}
                 </tr>
                 {% endfor%}
             </tbody>
@@ -78,20 +79,9 @@
 <!-- LLAMA DE LA CARPETA STICT EL JS -->
 {% block js %}
 {% load static %}
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>  <!-- Agrega la referencia a jQuery -->
-<script type="text/javascript">
-    
-        // var $ = jQuery.noConflict();  No es necesario si estás utilizando jQuery directamente
-        var $ = jQuery.noConflict();
-        function abrir_modal_ediccion(url) {
-            jQuery('#ediccion').load(url, function () {
-                jQuery(this).modal('show');
-            });
-        }
-
-        window.abrir_modal_ediccion = abrir_modal_ediccion;
-   
-
-   
-</script>
+<!-- sweetalert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
+<!-- trabajo js -->
+<script src="{% static 'js/btnEliminacion.js' %}"></script>
 {% endblock %}

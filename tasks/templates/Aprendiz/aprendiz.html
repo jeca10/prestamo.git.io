@@ -54,7 +54,7 @@
                             {% if user.is_superuser %}
                            
                              |
-                             <a class="btn btn-danger" href="{% url 'delete_apend' apren.id %}" role="button">borrar</a>
+                             <a class="btn btn-danger btnEliminacion" href="{% url 'delete_apend' apren.id %}" role="button">borrar</a>
                     </td>
                         {% endif%}
                 </tr>
@@ -72,3 +72,8 @@
 
 {% endblock %}
 
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
+<script src="{% static 'js/btnEliminacion.js' %}"></script>
+{% endblock %}

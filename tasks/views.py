@@ -137,7 +137,7 @@ def createcompus(request):
         except ValueError:
             return render(request, 'Computador/create_compus.html', {
                 'form': CumposForm,
-                "error": 'Error al crear el compus'
+                "error": 'Error al crear el compu'
             })
 
 
@@ -145,7 +145,7 @@ def compus_detail(request, compu_id):
    if request.method == "GET":
         compu =get_object_or_404(Compus, pk=compu_id)
         form = CumposForm(instance=compu)
-        return render(request, 'Computador/modal_editar.html', {'compus': compu, 'form': form})
+        return render(request, 'Computador/compu_detail.html', {'compus': compu, 'form': form})
    else:
       try:
             compu =get_object_or_404(Compus, pk=compu_id)
@@ -153,7 +153,7 @@ def compus_detail(request, compu_id):
             form.save()
             return redirect('cumpu')
       except ValueError:
-            return render(request, 'Computador/modal_editar.html', {'compus': compu, 'form': form,
+            return render(request, 'Computador/compu_detail.html', {'compus': compu, 'form': form,
             'error': "error al actualizar"    
             })
 
