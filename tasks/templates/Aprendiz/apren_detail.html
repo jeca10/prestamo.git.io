@@ -12,20 +12,17 @@
             </h1>
             <form method="POST">
                 {% csrf_token %}
-               <!--  {{form.as_p}} -->
 
-
-                {% for apren in aprendiz %}
                 <div class="">
                     <label for="id_Nombre">Nombre:</label>
-                    <input type="text" name="Nombre" maxlength="200" value="{{apren.Nombre}}" required="" aria-invalid="true"
+                    <input type="text" name="Nombre" maxlength="200" value="{{ aprendiz.Nombre }}" required="" aria-invalid="true"
                         id="id_Nombre">
                 </div>
                 <div class="">
                     <label for="id_Documento">Documento:</label>
                     <textarea name="Documento" cols="40" rows="10" id="id_Documento"></textarea>
                 </div>
-                {% endfor%}
+                
                 <button class="btn btn-primary">
                     save
                 </button>

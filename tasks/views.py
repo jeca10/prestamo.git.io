@@ -223,4 +223,4 @@ def listar_obje(request):
             Q(marca__icontains=busqueda) 
         ).distinct()
 
-    return render(request, 'Computador/compus.html', {'compus': buscar})
+    return render(request, 'Computador/compus.html', {'compu': buscar})
