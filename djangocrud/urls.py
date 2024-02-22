@@ -35,6 +35,7 @@ urlpatterns = [
     path('delete_Compu/<int:compu_id>', views.delete_Compu, name='delete_Compu'),
     path('aprendiz/',views.aprendiz,name='aprendiz'),
     path('create_aprendiz/',views.create_aprendiz,name='create_aprendiz'),
-    path('aprendiz_detail/',views.aprendiz_detail,name='aprendiz_detail'),
-    path('delete_apend/<int:apren_id>/', views.delete_apend, name='delete_apend')
+    path('aprendiz_detail/<int:apren_id>/',views.aprendiz_detail,name='aprendiz_detail'),
+    path('delete_apend/<int:apren_id>/', views.delete_apend, name='delete_apend'),
+    path('buscar/',views.listar_obje,name='buscar'),
 ]

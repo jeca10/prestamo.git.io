@@ -32,9 +32,11 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Documento</th>
-                    <th>Formacion</th>
+                    <th>Formación</th>
                     <th>Ficha</th>
-                    <th>Accion</th>
+                    {% if user.is_superuser %}
+                    <th>Acción</th>
+                    {% endif%}
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -48,8 +50,9 @@
                     <td>{{apren.Formacion}}</td>
                     <td>{{apren.Ficha}}</td>
                     <td>
-                        <a class="btn btn-success" href="{% url 'aprendiz_detail' %}" role="button">editar</a>
-                            {% if user.is_superuser %}
+                        {% if user.is_superuser %}
+                        <a class="btn btn-success" href="{% url 'aprendiz_detail' apren.id %}" role="button">editar</a>
+                            
                            
                              |
                              <a class="btn btn-danger btnEliminacion" href="{% url 'delete_apend' apren.id %}" role="button">borrar</a>

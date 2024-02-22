@@ -13,13 +13,37 @@
             <h1 class="text-center displey-3 py-5">
                 Laptop Registration
             </h1>
-            form method="POST">
+            <div class="col-lg-7 text-center py-5">
+                <h1 class="animate__animated animate__pulse">Create laptod</h1>
+        
+                <form action="" method="post" id="formularioCreate">
+                  
+                  {% csrf_token %}
+                  <div class="form-row py-3 pt-5">
+                    <div class="offset-1 col-lg-10 py-3">
+                        <input type="text" name="marca" value="{{compu.marca}}" maxlength="50" required="" id="id_marca">
+                    </div>
+                    <div class="offset-1 col-lg-10 py-3">
+                        <textarea name="serial" cols="40" rows="10" maxlength="20" value="{{compu.serial}}" required="" id="id_serial"></textarea>
+                    </div>
+                    <div class="offset-1 col-lg-10 py-3">
+                        <textarea name="descricion" cols="40" value="{{compu.descricion}}" rows="10" id="id_descricion"></textarea>
+                    </div>
+                  </div>
+                  <div class="foem_row py-2">
+                    <div class="offset-1 col-lg-10 py-3">
+                      <button type="submit" class="btn1">Save</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+        <!-- <form method="POST">
             {% csrf_token %}
             {{form}}
             <button class="btn btn-primary">
                 Update
             </button>
-        </form>
+        </form> -->
         </div>
     </div>
 </main>

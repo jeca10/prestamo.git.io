@@ -3,14 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
-    /* btnEliminacion.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            let confirmacion = confirm("¿Confirma la eliminacion del computador?");
-            if(!confirmacion) {
-                e.preventDefault();
-            }
-        })
-    }); */
+    
     btnEliminacion.forEach(btn => {
         btn.addEventListener('click', function (e) {
                 e.preventDefault();

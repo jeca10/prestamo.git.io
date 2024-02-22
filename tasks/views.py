@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from django.db.models import Q
 from .forms import TaskForm, CumposForm, AprendizForm
 from .models import Task,Compus, Aprendiz
 from django.utils import timezone
@@ -31,7 +32,7 @@ def signup(request):
                 user = User.objects.create_user(username=username, password=password)
                 user.save()
                 login(request, user)
-                return redirect('tasks')
+                return redirect('/')
             except IntegrityError:
                 return render(request, 'signup.html', {
                     'form': form,
@@ -184,9 +185,9 @@ def create_aprendiz(request):
                 "error": 'Error al crear el Aprendiz'
             })
 
-def aprendiz_detail(request):
+def aprendiz_detail(request, apren_id):
     if request.method == "GET":
-        apren = get_object_or_404(Aprendiz)
+        apren = get_object_or_404(Aprendiz, pk=apren_id)
         form = AprendizForm(instance=apren)
         return render(request, 'Aprendiz/apren_detail.html',
                       {'aprendiz':apren, 'form':form,
@@ -194,7 +195,7 @@ def aprendiz_detail(request):
                        })
     else: 
         try:
-            apren = get_object_or_404(Aprendiz)
+            apren = get_object_or_404(Aprendiz, pk=apren_id)
             form = AprendizForm(request.POST, instance=apren)
             form.save()
             return redirect('aprendiz')
@@ -208,3 +209,18 @@ def delete_apend(request, apren_id):
     if request.method == 'GET':
         apren.delete()
         return redirect('aprendiz')
+
+
+
+
+def listar_obje(request):
+    busqueda = request.POST.get('busqueda')
+    buscar =  Compus.objects.all()
+
+    if busqueda:
+        compu = compu.filter(
+            Q(serial__icontains=busqueda )|
+            Q(marca__icontains=busqueda) 
+        ).distinct()
+
+    return render(request, 'Computador/compus.html', {'compus': buscar})

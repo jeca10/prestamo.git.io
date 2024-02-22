@@ -31,3 +31,42 @@
 .table table{
     margin-top: auto;
 }
+
+*{
+    padding: 0;
+    margin: 0;
+    border-radius: border-box;
+}
+
+
+.row{
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px;
+}
+
+.table h1{  
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: "Pacifico", cursive;
+}
+
+.btn1{
+    height: 50px;
+    width: 300px;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    font-weight: 600;
+    background: #00b91f;
+    color: white;
+  }
+
+.table table{
+    margin-top: auto;
+}
+
+.buscador {
+    text-align: right; /* O puedes usar float: left; según tus necesidades */
+}
+
