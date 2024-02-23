@@ -28,16 +28,10 @@
             
             
             <div class="buscador">
-                <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" 
-                method="get">
-                    <div class="input">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar"
-                            value="{{ request.GET.buscar }}">
-                            <button id="buscar" class="btn btn-success" type="submit">
-                                Buscar
-                            </button>
-                    </div>
-                    
+                <form method="post" action="/compus/">
+                    {% csrf_token %}
+                    <input type="text" name="serial" value="" placeholder="buscar">
+                    <button>buscar</button>
                 </form>
             </div>
             

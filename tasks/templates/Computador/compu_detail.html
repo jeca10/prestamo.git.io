@@ -2,50 +2,52 @@
 
 {% block js %}
 {% load static %}
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="{% static 'css/editar.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<main class="container" id="modal-container">
+<section class="container py-5 bg-light">
+  <main class="container" id="modal-container">
     <div class="row">
-        <div class="text-center">
-            <h1 class="text-center displey-3 py-5">
-                Laptop Registration
-            </h1>
-            <div class="col-lg-7 text-center py-5">
-                <h1 class="animate__animated animate__pulse">Create laptod</h1>
-        
-                <form action="" method="post" id="formularioCreate">
-                  
-                  {% csrf_token %}
-                  <div class="form-row py-3 pt-5">
-                    <div class="offset-1 col-lg-10 py-3">
-                        <input type="text" name="marca" value="{{compu.marca}}" maxlength="50" required="" id="id_marca">
-                    </div>
-                    <div class="offset-1 col-lg-10 py-3">
-                        <textarea name="serial" cols="40" rows="10" maxlength="20" value="{{compu.serial}}" required="" id="id_serial"></textarea>
-                    </div>
-                    <div class="offset-1 col-lg-10 py-3">
-                        <textarea name="descricion" cols="40" value="{{compu.descricion}}" rows="10" id="id_descricion"></textarea>
-                    </div>
-                  </div>
-                  <div class="foem_row py-2">
-                    <div class="offset-1 col-lg-10 py-3">
-                      <button type="submit" class="btn1">Save</button>
-                    </div>
-                  </div>
-                </form>
+
+      <div class="imgd col-lg-5">
+        <img src="{% static 'img/laptop2.jpg' %}" class="img-fluid py-5" alt="">
+      </div>
+
+
+      <div class="col-lg-7 text-center py-5">
+        <h1 class="animate__animated animate__pulse animate__infinite">Create Aprendiz</h1>
+
+        <form action="" method="post" id="formularioCreate">
+
+          {% csrf_token %}
+          <div class="form-row py-3 pt-5">
+            <div class="offset-1 col-lg-10 py-3">
+              <input type="text" name="marca" value="dell" maxlength="50" class="inp px-3" value="{{ compus.marca }}"
+                required="" id="id_marca">
+            </div>
+            <div class="form-row py-3 pt-3">
+              <input name="serial" cols="40" rows="10" maxlength="20" class="inp px-3" value="{{ compus.serial }}"
+                required="" id="id_serial"></input>
+            </div>
+            <div class="offset-1 col-lg-10 py-3">
+              <input name="descricion" cols="40" rows="10" class="inp px-3" value="{{ compus.descricion }}"
+                id="id_descricion"></input>
+            </div>
+            <div class="foem_row py-2">
+              <div class="offset-1 col-lg-10 py-3">
+                <button type="submit" class="btn1">Save</button>
               </div>
-        <!-- <form method="POST">
-            {% csrf_token %}
-            {{form}}
-            <button class="btn btn-primary">
-                Update
-            </button>
-        </form> -->
-        </div>
+            </div>
+        </form>
+      </div>
+
     </div>
-</main>
+  </main>
+</section>
 
 {% endblock %}

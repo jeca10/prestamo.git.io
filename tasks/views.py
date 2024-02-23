@@ -213,14 +213,12 @@ def delete_apend(request, apren_id):
 
 
 
+
 def listar_obje(request):
-    busqueda = request.POST.get('busqueda')
-    buscar =  Compus.objects.all()
+    if request.method=='GET':
+        comp = Compus.objects.all()
+        return render(request,'compus.html',{'computador':comp})
+    else:
+        comp = Compus.objects.filter(serial__icontains=request.POST['serial'])
+        return render(request,'compus.html',{'computador':comp})
 
-    if busqueda:
-        compu = compu.filter(
-            Q(serial__icontains=busqueda )|
-            Q(marca__icontains=busqueda) 
-        ).distinct()
-
-    return render(request, 'Computador/compus.html', {'compu': buscar})

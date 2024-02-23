@@ -1,34 +1,60 @@
 {% extends 'base.html' %}
 
+<!-- css -->
+{% block extra_css %}
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="{% static 'css/editar.css' %}">
+{% endblock %}
+
 
 {% block content %}
-
-<main class="container">
-
+<section class="container py-5 bg-light">
+  <main class="container" id="modal-container">
     <div class="row">
-        <div class="text-center">
-            <h1 class="text-center displey-3 py-5">
-                Laptop Registration
-            </h1>
-            <form method="POST">
-                {% csrf_token %}
 
-                <div class="">
-                    <label for="id_Nombre">Nombre:</label>
-                    <input type="text" name="Nombre" maxlength="200" value="{{ aprendiz.Nombre }}" required="" aria-invalid="true"
-                        id="id_Nombre">
-                </div>
-                <div class="">
-                    <label for="id_Documento">Documento:</label>
-                    <textarea name="Documento" cols="40" rows="10" id="id_Documento"></textarea>
-                </div>
-                
-                <button class="btn btn-primary">
-                    save
-                </button>
-            </form>
-        </div>
+      <div class="col-lg-5">
+        <img src="{% static 'img/editar_pren.jpg' %}" class="img-fluid py-5" alt="">
+      </div>
+
+
+      <div class="col-lg-7 text-center py-5">
+        <h1 class="animate__animated animate__pulse animate__infinite">Create Aprendiz</h1>
+
+        <form action="" method="post" id="formularioCreate">
+
+          {% csrf_token %}
+          <div class="form-row py-3 pt-5">
+            <div class="offset-1 col-lg-10 py-3">
+              <input type="text" name="Nombre" maxlength="200" class="inp px-3" value="{{ aprendiz.Nombre }}"
+                required="" aria-invalid="true" id="id_Nombre">
+            </div>
+            <div class="form-row py-3 pt-3">
+              <input name="Documento" cols="40" rows="10" class="inp px-3" value="{{ aprendiz.Documento }}"
+                id="id_Documento"></input>
+            </div>
+            <div class="offset-1 col-lg-10 py-3">
+              <input name="Formacion" cols="40" rows="10" class="inp px-3" value="{{ aprendiz.Formacion }}"
+                maxlength="300" required="" id="id_Formacion"></input>
+            </div>
+            <div class="offset-1 col-lg-10 py-3">
+              <input name="Ficha" cols="40" rows="10" class="inp px-3" value="{{ aprendiz.Ficha }}"
+                id="id_Ficha"></input>
+            </div>
+            <div class="foem_row py-2">
+              <div class="offset-1 col-lg-10 py-3">
+                <button type="submit" class="btn1">Save</button>
+              </div>
+            </div>
+        </form>
+      </div>
+
     </div>
-</main>
+  </main>
+</section>
+
 
 {% endblock %}
