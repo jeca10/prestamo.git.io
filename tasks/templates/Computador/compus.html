@@ -28,12 +28,10 @@
             
             
             <div class="buscador">
-                <form method="post" action="/compus/">
+                <form method="post" action="/buscar/">
                     {% csrf_token %}
-                    <inpu
-                    
-                    t type="text" name="serial" value="" placeholder="buscar">
-                    <button>buscar</button>
+                    <input type="text" name="serial" value="" placeholder="buscar">
+                    <button class="btn btn-success">buscar</button>
                 </form>
             </div>
             

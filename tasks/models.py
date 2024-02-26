@@ -30,3 +30,13 @@ class Aprendiz(models.Model):
     Formacion = models.CharField(max_length=300)
     Ficha = models.IntegerField(null=True, blank=True)
     
+class Prestamo(models.Model):
+    Descripcion = models.TextField(blank=True)
+    hora_inicio = models.DateTimeField(null=True, blank=True)
+    hora_fin = models.DateTimeField(null=True, blank=True)
+    Documento  = models.ForeignKey(Aprendiz, on_delete=models.CASCADE)
+    Serial = models.ForeignKey(Compus, on_delete=models.CASCADE )
+
+    def __str__(self):
+        return str(self.Documento.Documento) + '-by' + str(self.Serial.serial)
+

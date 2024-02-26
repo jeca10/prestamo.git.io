@@ -21,6 +21,15 @@
                     <a href="{% url 'create_aprendiz' %}" class="text-white">Create</a>
                 </button>
             </div>
+
+            <div class="buscador">
+                <form method="post" action="/buscar2/">
+                    {% csrf_token %}
+                    <input type="text" name="Nombre" value="" placeholder="buscar">
+                    <button class="btn btn-success">buscar</button>
+                </form>
+            </div>
+            
             
             <table
             class="table table-striped table-hover table-borderless table-primary align-middle"

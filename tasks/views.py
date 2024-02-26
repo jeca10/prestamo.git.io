@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.db.models import Q
 from .forms import TaskForm, CumposForm, AprendizForm
-from .models import Task,Compus, Aprendiz
+from .models import Task,Compus, Aprendiz, Prestamo
 from django.utils import timezone
 import re
 
@@ -49,6 +49,7 @@ def signup(request):
         })
        
 
+""" Tasks """
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tareas/tasks.html', {"tasks": tasks})
@@ -106,6 +107,8 @@ def delete_task(request, task_id):
         return redirect('tasks')
 
 
+""" Ingresar """
+
 def signin(request):
     if request.method == 'GET':
         return render(request, 'signin.html', {"form": AuthenticationForm})
@@ -119,6 +122,8 @@ def signin(request):
         login(request, user)
         return redirect('/')
  
+
+""" Computadores  """
 
 def cumpu(request):
     compus=Compus.objects.all()
@@ -164,6 +169,18 @@ def delete_Compu(request, compu_id):
     if request.method == 'GET':
         compus.delete()
         return redirect('cumpu')
+    
+
+def listar_obje(request):
+    if request.method=='GET':
+        comp = Compus.objects.all()
+        return render(request,'Computador/compus.html',{'compus':comp})
+    else:
+        comp = Compus.objects.filter(serial__icontains=request.POST['serial'])
+        return render(request,'Computador/compus.html',{'compus':comp})
+
+
+""" Aprendiz """
 
 def aprendiz(request):
     aprendiz=Aprendiz.objects.all()
@@ -209,16 +226,22 @@ def delete_apend(request, apren_id):
     if request.method == 'GET':
         apren.delete()
         return redirect('aprendiz')
-
-
-
-
-
-def listar_obje(request):
+    
+def listar_obje_aprend(request):
     if request.method=='GET':
-        comp = Compus.objects.all()
-        return render(request,'compus.html',{'computador':comp})
+        apren = Aprendiz.objects.all()
+        return render(request,'Aprendiz/aprendiz.html',{'aprendiz':apren})
     else:
-        comp = Compus.objects.filter(serial__icontains=request.POST['serial'])
-        return render(request,'compus.html',{'computador':comp})
+        apren = Aprendiz.objects.filter(Nombre__icontains=request.POST['Nombre'])
+        return render(request,'Aprendiz/aprendiz.html',{'aprendiz':apren})
+
+
+""" Prestamo """
+
+def prestamo(request):
+    pres=Prestamo.objects.all()
+    return render(request, 'prestamo/prestamo.html',{'prestamo':pres})
+
+
+
 

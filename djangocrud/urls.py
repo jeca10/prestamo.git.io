@@ -38,4 +38,6 @@ urlpatterns = [
     path('aprendiz_detail/<int:apren_id>/',views.aprendiz_detail,name='aprendiz_detail'),
     path('delete_apend/<int:apren_id>/', views.delete_apend, name='delete_apend'),
     path('buscar/',views.listar_obje,name='buscar'),
+    path('buscar2/',views.listar_obje_aprend,name='buscar2'),
+    path('prestamo/',views.prestamo,name='prestamo'),
 ]

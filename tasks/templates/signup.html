@@ -26,7 +26,7 @@
                 <div class="col-lg-7 text-center py-5">
                     <h1 class="animate__animated animate__pulse">Welcome</h1>
     
-                    <form action="">
+                    <form action="" method="post">
                         {{error}}
                         {% csrf_token %}
                         <div class="form-row py-3 pt-5">
@@ -34,14 +34,14 @@
                                 <input type="text" name="username" id="username" class="inp px-3" placeholder="Username">
                             </div>
                         </div>
-                        {% csrf_token %}
+                      
                         <div class="form-row py-3 pt-5">
                             <div class="offset-1 col-lg-10">
                                 <input type="password" name="password1" id="password1" class="inp px-3"
                                     placeholder="Password">
                             </div>
                         </div>
-                        {% csrf_token %}
+                      
                         <div class="form-row py-3 pt-5">
                             <div class="offset-1 col-lg-10">
                                 <input type="password" name="password2" id="password2" class="inp px-3"

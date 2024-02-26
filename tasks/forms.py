@@ -1,5 +1,5 @@
 from django import forms
-from .models import Task, Compus, Aprendiz
+from .models import Task, Compus, Aprendiz, Prestamo
 
 class TaskForm(forms.ModelForm):
     class Meta:
@@ -36,4 +36,17 @@ class AprendizForm(forms.ModelForm):
         'Ficha' : forms.Textarea
 
     }
-        
+    
+
+class PrestamoForm(forms.ModelForm):
+    class Meta:
+        model = Prestamo
+        fields = ['Documento', 'Serial', 'Descripcion' , 'hora_inicio', 'hora_fin']
+        widgets = {
+            'Documento' : forms.TextInput,
+            'serial' : forms.Textarea,
+            'Descripcion' : forms.Textarea,
+            'hora_inicio' : forms.DateTimeField,
+            'hora_fin' : forms.DateTimeInput,
+        }
+    
