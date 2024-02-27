@@ -12,13 +12,13 @@
 
 {% block content %}
 
-<section class="table py-6 bg-light">
+<section class="table py-5 bg-light">
     <div class="container">
         <div class="row g-0">
             <h1 class="animate__animated animate__pulse">Table Aprendiz</h1>
             <div class="col-lg-5 ">
                 <button class="btn1 ">
-                    <a href="{% url 'create_aprendiz' %}" class="text-white">Create</a>
+                    <a href="{% url 'crear_prestamo' %}" class="text-white">Create</a>
                 </button>
             </div>
             
@@ -51,13 +51,9 @@
                     <td>{{pres.hora_fin}}</td>
                    
                     <td>
-                        <a class="btn btn-success" href="" role="button">editar</a>
-                            {% if user.is_superuser %}
-                           
-                             |
-                             <a class="btn btn-danger btnEliminacion" href="" role="button">borrar</a>
+                        <a class="btn btn-danger btnEliminacion" href="{% url 'delete_pres' pres.id %}" role="button">Eliminar prestamo</a>
                     </td>
-                        {% endif%}
+                       
                 </tr>
                 {% endfor%}
             </tbody>

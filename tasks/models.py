@@ -22,6 +22,8 @@ class Compus(models.Model):
     descricion=models.TextField(blank=True)
     hora_inicio = models.DateTimeField(null=True, blank=True)
     hora_fin = models.DateTimeField(null=True, blank=True)
+    def __str__(self):
+        return self.serial
 
 
 class Aprendiz(models.Model):
@@ -29,14 +31,15 @@ class Aprendiz(models.Model):
     Documento = models.IntegerField(null=True, blank=True)
     Formacion = models.CharField(max_length=300)
     Ficha = models.IntegerField(null=True, blank=True)
+    def __str__(self):
+        return str(self.Documento)
     
 class Prestamo(models.Model):
     Descripcion = models.TextField(blank=True)
     hora_inicio = models.DateTimeField(null=True, blank=True)
-    hora_fin = models.DateTimeField(null=True, blank=True)
-    Documento  = models.ForeignKey(Aprendiz, on_delete=models.CASCADE)
-    Serial = models.ForeignKey(Compus, on_delete=models.CASCADE )
+    hora_fin = models.DateTimeField(auto_now_add=True)
+    Documento  = models.CharField(max_length=20)
+    Serial = models.CharField(max_length=20)
 
-    def __str__(self):
-        return str(self.Documento.Documento) + '-by' + str(self.Serial.serial)
+    
 

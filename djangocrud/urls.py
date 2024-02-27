@@ -40,4 +40,6 @@ urlpatterns = [
     path('buscar/',views.listar_obje,name='buscar'),
     path('buscar2/',views.listar_obje_aprend,name='buscar2'),
     path('prestamo/',views.prestamo,name='prestamo'),
+     path('crear_prestamo/',views.crear_prestamo,name='crear_prestamo'),
+     path('delete_pres/<int:pres_id>/', views.delete_pres, name='delete_pres'),
 ]

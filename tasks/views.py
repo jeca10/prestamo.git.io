@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.db.models import Q
-from .forms import TaskForm, CumposForm, AprendizForm
+from .forms import TaskForm, CumposForm, AprendizForm, PrestamoForm
 from .models import Task,Compus, Aprendiz, Prestamo
 from django.utils import timezone
 import re
@@ -49,7 +49,7 @@ def signup(request):
         })
        
 
-""" Tasks """
+# Tasks 
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tareas/tasks.html', {"tasks": tasks})
@@ -74,7 +74,7 @@ def create_task(request):
 
 def desconectar(request):
     logout(request)
-    return redirect('home')
+    return redirect('/')
 
 def task_detail(request, task_id):
    if request.method == "GET":
@@ -107,7 +107,7 @@ def delete_task(request, task_id):
         return redirect('tasks')
 
 
-""" Ingresar """
+#Ingresar
 
 def signin(request):
     if request.method == 'GET':
@@ -123,7 +123,7 @@ def signin(request):
         return redirect('/')
  
 
-""" Computadores  """
+#Computadores 
 
 def cumpu(request):
     compus=Compus.objects.all()
@@ -179,8 +179,7 @@ def listar_obje(request):
         comp = Compus.objects.filter(serial__icontains=request.POST['serial'])
         return render(request,'Computador/compus.html',{'compus':comp})
 
-
-""" Aprendiz """
+#Aprendiz """
 
 def aprendiz(request):
     aprendiz=Aprendiz.objects.all()
@@ -236,12 +235,31 @@ def listar_obje_aprend(request):
         return render(request,'Aprendiz/aprendiz.html',{'aprendiz':apren})
 
 
-""" Prestamo """
+#Prestamo """
 
 def prestamo(request):
     pres=Prestamo.objects.all()
     return render(request, 'prestamo/prestamo.html',{'prestamo':pres})
 
-
-
+def crear_prestamo(request):
+    if request.method == 'GET':
+        return render(request, 'prestamo/crear_prestamo.html', {
+            'form': PrestamoForm
+        })
+    else:
+        try:
+            form=PrestamoForm(request.POST)
+            form.save()
+            return redirect('prestamo')
+        except ValueError:
+            return render(request, 'prestamo/crear_prestamo.html', {
+                'form': PrestamoForm,
+                "error": 'Error al crear el prestamo'
+            })
+        
+def delete_pres(request, pres_id):
+    pres = get_object_or_404(Prestamo, pk=pres_id)
+    if request.method == 'GET':
+        pres.delete()
+        return redirect('Prestamo')
 
