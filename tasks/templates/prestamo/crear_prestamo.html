@@ -26,8 +26,8 @@
       <div class="col-lg-7 text-center py-5">
         <h1 class="animate__animated animate__pulse">Create Prestamo</h1>
 
-        <form action="" method="post" id="formularioCreate">
-            {{ error }}
+        <form action="" method="post" >
+          {{ error }}
           {% csrf_token %}
           <div class="form-row py-3 pt-5">
             <div class="offset-1 col-lg-10 py-4">
@@ -40,9 +40,7 @@
             <div class="offset-1 col-lg-10 py-4">
               <input name="Descripcion" cols="40" class="inp px-3" rows="10" id="id_Descripcion" placeholder='Descripcion'></input>
             </div>
-            <div class="offset-1 col-lg-10 py-4">
-              <input type="text" name="hora_inicio" class="inp px-3" id="id_hora_inicio" placeholder="Hora_inicio">
-            </div>
+            
           </div>
           <div class="foem_row py-2">
             <div class="offset-1 col-lg-10 py-4">

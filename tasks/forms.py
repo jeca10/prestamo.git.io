@@ -41,12 +41,11 @@ class AprendizForm(forms.ModelForm):
 class PrestamoForm(forms.ModelForm):
     class Meta:
         model = Prestamo
-        fields = ['Documento', 'Serial', 'Descripcion' , 'hora_inicio',]
+        fields = ['Documento', 'Serial', 'Descripcion' ,]
         widgets = {
-            'documento' : forms.TextInput,
-            'serial' : forms.TextInput,
+            'Documento' : forms.TextInput,
+            'Serial' : forms.TextInput,
             'Descripcion' : forms.Textarea,
-            'hora_inicio' : forms.DateTimeInput,
-            
+                        
         }
     

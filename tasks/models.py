@@ -36,7 +36,7 @@ class Aprendiz(models.Model):
     
 class Prestamo(models.Model):
     Descripcion = models.TextField(blank=True)
-    hora_inicio = models.DateTimeField(null=True, blank=True)
+    hora_inicio = models.DateTimeField(auto_now_add=True)
     hora_fin = models.DateTimeField(auto_now_add=True)
     Documento  = models.CharField(max_length=20)
     Serial = models.CharField(max_length=20)

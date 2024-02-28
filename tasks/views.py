@@ -241,6 +241,8 @@ def prestamo(request):
     pres=Prestamo.objects.all()
     return render(request, 'prestamo/prestamo.html',{'prestamo':pres})
 
+
+
 def crear_prestamo(request):
     if request.method == 'GET':
         return render(request, 'prestamo/crear_prestamo.html', {
@@ -248,6 +250,8 @@ def crear_prestamo(request):
         })
     else:
         try:
+            print(request.POST)
+            
             form=PrestamoForm(request.POST)
             form.save()
             return redirect('prestamo')
@@ -256,6 +260,8 @@ def crear_prestamo(request):
                 'form': PrestamoForm,
                 "error": 'Error al crear el prestamo'
             })
+        
+
         
 def delete_pres(request, pres_id):
     pres = get_object_or_404(Prestamo, pk=pres_id)
