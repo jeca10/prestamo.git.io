@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px;
+}
+
+
+.container img {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.container h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: "Pacifico", cursive;
+}
+
+
+#id_Serial, #id_Documento, #id_Descripcion {
+    height: 50px;
+    width: 350px;
+    border: none;
+    margin-top: 20px;
+    outline: none;
+    border-radius: 60px;
+    -webkit-box-shadow: 16px 15px 30px -1px rgba(66, 68, 90, 0.657);
+    -moz-box-shadow: 16px 15px 30px -1px rgba(66, 68, 90, 0.497);
+    box-shadow: 16px 15px 30px -1px rgba(66, 68, 90, 0.566);
+}
+
+.btn1 {
+    height: 50px;
+    width: 400px;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    font-weight: 600;
+    background: #00b91f;
+    color: white;
+    margin-top: 40px;
+}
+
+form div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+form label{
+    font-family: "Madimi One";
+    font-weight: 400;
+    font-style: normal;
+}

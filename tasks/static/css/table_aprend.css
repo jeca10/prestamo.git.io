@@ -31,3 +31,7 @@
 .table table{
     margin-top: auto;
 }
+
+.buscador {
+    text-align: right; /* O puedes usar float: left; según tus necesidades */
+}

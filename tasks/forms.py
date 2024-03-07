@@ -1,51 +1,45 @@
-from django import forms
+from django.forms import *
 from .models import Task, Compus, Aprendiz, Prestamo
 
-class TaskForm(forms.ModelForm):
+class TaskForm(ModelForm):
     class Meta:
         model = Task
         fields =['title', 'description', 'important']
         widgets= {
-            'title' : forms.TextInput(attrs={'class' : 'form-control'}),
-            'description' : forms.Textarea(attrs={'class' : 'form-control'}),
-            'important' : forms.CheckboxInput(attrs={'class' : 'form-Check-input m-auto'})
+            'title' : TextInput(attrs={'class' : 'form-control'}),
+            'description' : Textarea(attrs={'class' : 'form-control'}),
+            'important' : CheckboxInput(attrs={'class' : 'form-Check-input m-auto'})
             
         }
 
 
-class CumposForm(forms.ModelForm):
+class CumposForm(ModelForm):
     class Meta:
         model=Compus
         fields = ['marca', 'serial', 'descricion', ]
         widgets = {
-        'marca' : forms.TextInput,
-        'serial' : forms.Textarea,
-        'descricion' : forms.Textarea
+        'marca' : TextInput,
+        'serial' : Textarea,
+        'descricion' : Textarea
 
     }
 
 
-class AprendizForm(forms.ModelForm):
+class AprendizForm(ModelForm):
     class Meta:
         model=Aprendiz
         fields = ['Nombre', 'Documento', 'Formacion', 'Ficha', ]
         widgets = {
-        'Nombre' : forms.TextInput,
-        'Documento' : forms.Textarea,
-        'Formacion' : forms.Textarea,
-        'Ficha' : forms.Textarea
-
+        'Nombre' : TextInput,
+        'Documento' : Textarea,
+        'Formacion' : Textarea,
+        'Ficha' : Textarea
     }
-    
+        
 
-class PrestamoForm(forms.ModelForm):
-    class Meta:
-        model = Prestamo
-        fields = ['Documento', 'Serial', 'Descripcion' ,]
-        widgets = {
-            'Documento' : forms.TextInput,
-            'Serial' : forms.TextInput,
-            'Descripcion' : forms.Textarea,
-                        
-        }
+class PrestamoForm(forms.Form):
+    Documento = ModelChoiceField(queryset=Aprendiz.objects.order_by("Documento").all(), label="Documento")
+    Serial = IntegerField(label="Serial")
+    Descripcion = CharField(label="Descripcion")
+    
     

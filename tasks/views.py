@@ -232,7 +232,7 @@ def listar_obje_aprend(request):
         return render(request,'Aprendiz/aprendiz.html',{'aprendiz':apren})
     else:
         apren = Aprendiz.objects.filter(Nombre__icontains=request.POST['Nombre'])
-        return render(request,'Aprendiz/aprendiz.html',{'aprendiz':apren})
+        return render(request,'Aprendiz/aprendi.html',{'aprendiz':apren})
 
 
 #Prestamo """
@@ -250,15 +250,25 @@ def crear_prestamo(request):
         })
     else:
         try:
-            print(request.POST)
-            
             form=PrestamoForm(request.POST)
-            form.save()
+            if (not form.is_valid()):
+                raise Exception("Datos ingresados inválidos")
+
+            objeto = Prestamo()
+            objeto.Documento = form.cleaned_data["Documento"]
+            objeto.Serial = form.cleaned_data['Serial']
+            objeto.Descripcion = form.cleaned_data['Descripcion']
+            objeto.save()
             return redirect('prestamo')
         except ValueError:
             return render(request, 'prestamo/crear_prestamo.html', {
                 'form': PrestamoForm,
                 "error": 'Error al crear el prestamo'
+            })
+        except:
+            return render(request, 'prestamo/crear_prestamo.html', {
+                'form': PrestamoForm,
+                "error": 'Ha ocurrido un error'
             })
         
 
@@ -267,5 +277,5 @@ def delete_pres(request, pres_id):
     pres = get_object_or_404(Prestamo, pk=pres_id)
     if request.method == 'GET':
         pres.delete()
-        return redirect('Prestamo')
+        return redirect('prestamo')
 

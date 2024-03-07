@@ -38,8 +38,6 @@ class Prestamo(models.Model):
     Descripcion = models.TextField(blank=True)
     hora_inicio = models.DateTimeField(auto_now_add=True)
     hora_fin = models.DateTimeField(auto_now_add=True)
-    Documento  = models.CharField(max_length=20)
+    Documento  = models.ForeignKey(Aprendiz, on_delete=models.CASCADE)
     Serial = models.CharField(max_length=20)
-
-    
 
