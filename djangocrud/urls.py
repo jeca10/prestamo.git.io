@@ -42,4 +42,5 @@ urlpatterns = [
     path('prestamo/',views.prestamo,name='prestamo'),
      path('crear_prestamo/',views.crear_prestamo,name='crear_prestamo'),
      path('delete_pres/<int:pres_id>/', views.delete_pres, name='delete_pres'),
+     path('buscar_docu/',views.busqueda_documento,name='buscar_docu'),
 ]

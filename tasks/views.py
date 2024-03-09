@@ -232,7 +232,7 @@ def listar_obje_aprend(request):
         return render(request,'Aprendiz/aprendiz.html',{'aprendiz':apren})
     else:
         apren = Aprendiz.objects.filter(Nombre__icontains=request.POST['Nombre'])
-        return render(request,'Aprendiz/aprendi.html',{'aprendiz':apren})
+        return render(request,'Aprendiz/aprendiZ.html',{'aprendiz':apren})
 
 
 #Prestamo """
@@ -278,4 +278,14 @@ def delete_pres(request, pres_id):
     if request.method == 'GET':
         pres.delete()
         return redirect('prestamo')
+
+
+
+def busqueda_documento(request):
+    if request.method=='GET':
+        pres = Aprendiz.objects.all()
+        return render(request,'prestamo/crear_prestamo.html',{'aprendiz':pres})
+    else:
+        pres = Aprendiz.objects.filter(Documento__icontains=request.POST['Documento'])
+        return render(request,'prestamo/crear_prestamo.html',{'aprendiz':pres})
 

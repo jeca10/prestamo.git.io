@@ -24,19 +24,23 @@
 
       <div class="col-lg-7 text-center py-5">
         <h1 class="animate__animated animate__pulse">Create Prestamo</h1>
-        <form action="{ url 'prestamo/' }" method="POST" >
+        <form action="" method="POST" >
           {{ error }}
           {% csrf_token %}
           {{ form }}
-          <button class="btnGuardar btn1"  type="submit">Save</button>
+          <button class=" btn1"  type="submit">Save</button>
         </form>
         <!-- <form action="" method="post" >
           {{ error }}
           {% csrf_token %}
           <div class="form-row py-3 pt-5">
-            <div class="offset-1 col-lg-10 py-4">
-             <input type="text" name="Documento" class="inp px-3" maxlength="20" required="" placeholder="Documento" id="id_Documento">
-            </div>
+            <div class="buscador">
+              <form method="post" action="/buscar_docu/">
+                  {% csrf_token %}
+                  <input class="inp" type="text" name="Nombre" value="" placeholder="buscar">
+                 
+              </form>
+          </div>
             <div class="offset-1 col-lg-10 py-4">
               <input type="number" class="inp px-3" id="serial" name="Serial" placeholder="Serial" min="10"  
               autofocus required>
@@ -48,15 +52,15 @@
           </div>
           <div class="foem_row py-2">
             <div class="offset-1 col-lg-10 py-4">
-              <button type="submit" class="btnGuardar btn1" id="btn1">Save</button>
+              <button type="submit" class=" btn1" id="btn1">Save</button>
             </div>
           </div>
-        </form> -->
+        </form>
       </div>
     </div>
   </div>
 
-</section>
+</section> -->
 
 
 {% endblock %}

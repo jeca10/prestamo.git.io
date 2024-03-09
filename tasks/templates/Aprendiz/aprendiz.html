@@ -25,7 +25,7 @@
             <div class="buscador">
                 <form method="post" action="/buscar2/">
                     {% csrf_token %}
-                    <input type="text" name="Nombre" value="" placeholder="buscar">
+                    <input class="inp" type="text" name="Nombre" value="" placeholder="buscar">
                     <button class="btn btn-success">buscar</button>
                 </form>
             </div>
@@ -38,7 +38,7 @@
             <thead class="table-light">
                 
                 <tr>
-                    <th>Id</th>
+                  
                     <th>Nombre</th>
                     <th>Documento</th>
                     <th>Formación</th>
@@ -53,7 +53,7 @@
                 <tr
                     class="table-primary"
                 >
-                    <td scope="row">{{apren.id}}</td>
+                   
                     <td>{{apren.Nombre}}</td>
                     <td>{{apren.Documento}}</td>
                     <td>{{apren.Formacion}}</td>
