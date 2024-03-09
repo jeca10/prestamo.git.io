@@ -48,7 +48,9 @@
                     <th>Marca</th>
                     <th># Serial</th>
                     <th>Descripción</th>
+                    {% if user.is_superuser %}
                     <th>Acción</th>
+                    {% endif%}
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -60,13 +62,10 @@
                     <td>{{compu.marca}}</td>
                     <td>{{compu.serial}}</td>
                     <td>{{compu.descricion}}</td>
-                    
+                    {% if user.is_superuser %}
                     <td>
-                       
-                        <a class="btn btn-success" href="{% url 'compus_detail' compu.id %}" role="button">Editar</a>
                         
-                        {% if user.is_superuser %}
-
+                        <a class="btn btn-success" href="{% url 'compus_detail' compu.id %}" role="button">Editar</a>
                          |
                          <a class="btn btn-danger btnEliminacion" href="{% url 'delete_Compu' compu.id %}" role="button">Borrar</a>
                     </td>

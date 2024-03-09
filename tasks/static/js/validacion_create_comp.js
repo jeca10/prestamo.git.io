@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const $formularioCreate = document.getElementById('formularioCreate');
     const $marca = document.getElementById('marca');
-    const btnEliminacion = document.getElementById('.btnEliminacion');
-    
 
     
     $formularioCreate.addEventListener('submit', function(e){

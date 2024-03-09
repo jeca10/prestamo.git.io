@@ -58,8 +58,9 @@
                     <td>{{apren.Documento}}</td>
                     <td>{{apren.Formacion}}</td>
                     <td>{{apren.Ficha}}</td>
+                    {% if user.is_superuser %}
                     <td>
-                        {% if user.is_superuser %}
+                        
                         <a class="btn btn-success" href="{% url 'aprendiz_detail' apren.id %}" role="button">editar</a>
                             
                            
