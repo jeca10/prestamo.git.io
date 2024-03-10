@@ -27,7 +27,7 @@
                     <h1 class="animate__animated animate__pulse">Welcome</h1>
     
                     <form action="" method="post">
-                        {{error}}
+                        <div class="error">{{error}}</div>
                         {% csrf_token %}
                         <div class="form-row py-3 pt-5">
                             <div class="offset-1 col-lg-10">
@@ -91,4 +91,9 @@
         </div>
     </div>
 </main> -->
+{% endblock %}
+
+{% block js %}
+{% load static %}
+<script src="{% static 'js/prueba_error.js' %}"></script>
 {% endblock %}

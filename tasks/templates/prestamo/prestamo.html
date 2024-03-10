@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link rel="stylesheet" href="{% static 'css/editar.css' %}">
+<link rel="stylesheet" href="{% static 'css/prestamo.css' %}">
 {% endblock %}
 
 
@@ -21,7 +21,14 @@
                     <a href="{% url 'crear_prestamo' %}" class="text-white">Create</a>
                 </button>
             </div>
-            
+            <div class="col-lg-5 ">
+                <button class="btn1 " id="btnReportesPdf">PDF</button>
+            </div>
+           <!--  <div class="col-lg-5 ">
+                <input type="button" value="Reporte Xls" id="btnReportes" name="btnReportes"
+                class="btn1" onclick="tableToExcel('table', 'Table prestamo')">
+            </div> -->
+           
             <table
             class="table table-striped table-hover table-borderless table-primary align-middle "
             id="table"
@@ -69,4 +76,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
 <script src="{% static 'js/btnEliminacion.js' %}"></script>
+<script src="{% static 'js/exportar/excel.js' %}"></script>
+<script src="{% static 'js/exportar/esportar.js' %}"></script>
+<script src="{% static 'js/exportar/html2pdf.bundle.min.js' %}"></script>
 {% endblock %}
