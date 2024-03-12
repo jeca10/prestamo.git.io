@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Realizar cualquier acción adicional antes de la redirección
 
                     // Redirigir a la página de Django 'prestamo/'
-                    window.location.href = '{% url "cumpu" %}'; 
+                    const formCreate = document.getElementById("formularioCreate");
+                    formCreate.submit();
+                    
                 },
                 allowOutsideClick: () => false,
                 allowEscapeKey: () => false

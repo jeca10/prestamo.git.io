@@ -117,7 +117,8 @@ def signin(request):
             request, username=request.POST['username'], password=request.POST['password'])
         
         if user is None:
-            return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
+            return render(request, 'signin.html', {"form": AuthenticationForm, 
+                                                   "error": "el usuario o la contraseña es incorrecta"})
 
         login(request, user)
         return redirect('/')
@@ -138,6 +139,7 @@ def createcompus(request):
     else:
         try:
             form=CumposForm(request.POST)
+            print(form)
             form.save()
             return redirect('cumpu')
         except ValueError:

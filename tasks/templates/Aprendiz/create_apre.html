@@ -29,8 +29,10 @@
       <div class="col-lg-7 text-center py-5">
         <h1 class="animate__animated animate__pulse">Create Aprendices</h1>
 
-        <form action="" id="formularioCreate" method="post">
-          {{error}}
+        <form action="" id="formularioCreate" method="post" id="formularioCreate">
+          {% if error %}
+            <div style="display: none;" id="error">{{error}}</div>
+          {% endif %}
           {% csrf_token %}
           <div class="form-row py-3 pt-5">
             <div class="offset-1 col-lg-10 py-4">
@@ -52,7 +54,7 @@
           </div>
           <div class="foem_row py-7">
             <div class="offset-1 col-lg-10 py-3">
-              <button type="submit" class="btn1" >Save</button>
+              <button type="submit" class="btnGuardar btn1" >Save</button>
             </div>
           </div>
         </form>
@@ -66,5 +68,8 @@
 {% endblock %}
 
 {% block js %}
+<script src="{% static 'js/btnGuardar.js' %}"></script>
 <script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
+<script src="{% static 'js/errores.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% endblock %}
