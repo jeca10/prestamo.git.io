@@ -37,11 +37,11 @@
                     
                 <tr>
                     <th>Id</th>
-                    <th>Docu</th>
+                    <th>Documento</th>
                     <th>Serial</th>
-                    <th>Descrip</th>
-                    <th>H/I</th>
-                    <th>H/F</th>
+                    <th>Descripción</th>
+                    <th>Hora Inicio</th>
+                    
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -52,10 +52,10 @@
                 >
                     <td scope="row">{{pres.id}}</td>
                     <td>{{pres.Documento.Documento}}</td>
-                    <td>{{pres.Serial}}</td>
+                    <td>{{pres.Serial.serial}}</td>
                     <td>{{pres.Descripcion}}</td>
                     <td>{{pres.hora_inicio}}</td>
-                    <td>{{pres.hora_fin}}</td>
+                    
                    
                     <td>
                         <a class="btn btn-danger btnEliminacion" href="{% url 'delete_pres' pres.id %}" role="button">Eliminar prestamo</a>

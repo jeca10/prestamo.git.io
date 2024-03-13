@@ -39,7 +39,7 @@ class AprendizForm(ModelForm):
 
 class PrestamoForm(forms.Form):
     Documento = ModelChoiceField(queryset=Aprendiz.objects.order_by("Documento").all(), label="Documento")
-    Serial = IntegerField(label="Serial")
+    Serial = ModelChoiceField(queryset=Compus.objects.order_by("serial").all(), label="serial")
     Descripcion = CharField(label="Descripcion")
     
     

@@ -39,5 +39,5 @@ class Prestamo(models.Model):
     hora_inicio = models.DateTimeField(auto_now_add=True)
     hora_fin = models.DateTimeField(auto_now_add=True)
     Documento  = models.ForeignKey(Aprendiz, on_delete=models.CASCADE)
-    Serial = models.CharField(max_length=20)
+    Serial = models.ForeignKey(Compus, on_delete=models.CASCADE)
 
