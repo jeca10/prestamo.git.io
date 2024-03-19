@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from django.db.models import Q
 from .forms import TaskForm, CumposForm, AprendizForm, PrestamoForm
 from .models import Task,Compus, Aprendiz, Prestamo
 from django.utils import timezone
@@ -16,13 +15,17 @@ def home(request):
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-
+        if not form.is_valid():
+           """  print(form.cleaned_data['username'])
+            print(form.cleaned_data.get('password1'))
+            print(form.cleaned_data.get('password2'))
+            print(form) """
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
 
             # Validar contraseña con expresión regular
-            if not re.match(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$', password):
+            if not re.match(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#-$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$', password):
                 return render(request, 'signup.html', {
                     'form': form,
                     'error': 'La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial.'
